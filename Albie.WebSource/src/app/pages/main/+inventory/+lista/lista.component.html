@@ -1,0 +1,55 @@
+<div id="content">
+    <div class="row">
+        <!-- Tabla grupos -->
+        <div class="col-md-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <div class="widget-body no-padding">
+                        <div class="row">
+                            <div class="col-6">
+                                <mat-checkbox class="pull-right top8" [(ngModel)]="hasAlmacen" (change)="productsSinAlmacen()">
+                                    <small>Sin almacen</small>
+                                </mat-checkbox>
+                                <abp-datatable #products [dragAndDropConfig]="dtProductsDragAndDropConfig"
+                                    (onDatatableDropzoneDrop)="dropSelectProduct($event)" title="Productos" [columns]="columnsList"
+                                    tableClass="table-sm table-hover table-stripped" [paginationId]="'dt-1'"
+                                    [urlDataParams]="{filtro: hasAlmacen}" [urlData]="'product/GetCollectionListProductsAlmacen'">
+                                </abp-datatable>
+                            </div>
+                            <div class="col-6">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <abp-dataselect [showIcon]="false" #almacenesSelect label="Selecciona almacen" url="location/GetLocationSelect"
+                                            (onSelect)="locationSelected($event)">
+                                        </abp-dataselect>
+                                    </div>
+                                    <div class="col-6">
+                                        <abp-dataselect *ngIf="almacen" [showIcon]="false" [urlParams]="{al: almacen}"
+                                            #zonas label="Selecciona una zona" url="zona/GetZonaSelect" (onSelect)="zonaSelected($event)">
+                                        </abp-dataselect>
+                                    </div>
+                                </div>
+                                <abp-datatable [launchOnStartup]="false" [dragAndDropConfig]="dtAlmacenesDragAndDropConfig"
+                                    (onDatatableDropzoneDrop)="dropSelectAlmacen($event)" #almacenes title="Almacenes"
+                                    [columns]="almacenColumns" tableClass="table-sm table-hover table-stripped"
+                                    [paginationId]="'dt-2'" [urlDataParams]="{almacen: almacen, zona: zona}" [urlData]="'almacenZP/GetCollectionListAlmacenZPs'">
+                                </abp-datatable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+

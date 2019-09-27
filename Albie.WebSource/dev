@@ -1,0 +1,97 @@
+
+> app-actio@0.0.0 build C:\IdealGA\ideal-education-web\Ideal.WebSource
+> npm run build:dev
+
+
+> app-actio@0.0.0 build:dev C:\IdealGA\ideal-education-web\Ideal.WebSource
+> ng build --watch --output-path=../Ideal.Api/wwwroot
+
+[0mDate: [1m[37m2019-04-24T08:25:14.548Z[39m[22m[0m
+[0mHash: [1m[37m6548c2984f7e6961f5be[39m[22m[0m
+[0mTime: [1m[37m25646[39m[22mms[0m
+[0mchunk {[1m[33mactividades.module[39m[22m} [1m[32mactividades.module.chunk.js, actividades.module.chunk.js.map[39m[22m () 8.69 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33maddress.module[39m[22m} [1m[32maddress.module.chunk.js, address.module.chunk.js.map[39m[22m () 2.33 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mall.module[39m[22m} [1m[32mall.module.chunk.js, all.module.chunk.js.map[39m[22m () 165 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33malta.module[39m[22m} [1m[32malta.module.chunk.js, alta.module.chunk.js.map[39m[22m () 26.4 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33malta_alumno.module[39m[22m} [1m[32malta_alumno.module.chunk.js, alta_alumno.module.chunk.js.map[39m[22m () 57.3 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33malumno.module[39m[22m} [1m[32malumno.module.chunk.js, alumno.module.chunk.js.map[39m[22m () 2.93 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33malumnos.module[39m[22m} [1m[32malumnos.module.chunk.js, alumnos.module.chunk.js.map[39m[22m () 8.42 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mauth.module[39m[22m} [1m[32mauth.module.chunk.js, auth.module.chunk.js.map[39m[22m () 3.76 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mcertificados.module[39m[22m} [1m[32mcertificados.module.chunk.js, certificados.module.chunk.js.map[39m[22m () 45.3 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mcity.module[39m[22m} [1m[32mcity.module.chunk.js, city.module.chunk.js.map[39m[22m () 2.26 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mcomentariosincidencias.module[39m[22m} [1m[32mcomentariosincidencias.module.chunk.js, comentariosincidencias.module.chunk.js.map[39m[22m () 12.7 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mcommon[39m[22m} [1m[32mcommon.chunk.js, common.chunk.js.map[39m[22m (common) 1.03 MB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mconfirmar.module[39m[22m} [1m[32mconfirmar.module.chunk.js, confirmar.module.chunk.js.map[39m[22m () 14.1 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mcontrato-alta.module[39m[22m} [1m[32mcontrato-alta.module.chunk.js, contrato-alta.module.chunk.js.map[39m[22m () 39.6 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mcontrato-detalle.module[39m[22m} [1m[32mcontrato-detalle.module.chunk.js, contrato-detalle.module.chunk.js.map[39m[22m () 24 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mcontrato-lista-id.module[39m[22m} [1m[32mcontrato-lista-id.module.chunk.js, contrato-lista-id.module.chunk.js.map[39m[22m () 12.6 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mcountry.module[39m[22m} [1m[32mcountry.module.chunk.js, country.module.chunk.js.map[39m[22m () 2.33 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdescargar-pruebas.module[39m[22m} [1m[32mdescargar-pruebas.module.chunk.js, descargar-pruebas.module.chunk.js.map[39m[22m () 16.2 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetails.module[39m[22m} [1m[32mdetails.module.chunk.js, details.module.chunk.js.map[39m[22m () 11.4 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetails.module.0[39m[22m} [1m[32mdetails.module.0.chunk.js, details.module.0.chunk.js.map[39m[22m () 12 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetails.module.1[39m[22m} [1m[32mdetails.module.1.chunk.js, details.module.1.chunk.js.map[39m[22m () 47.5 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetails.module.2[39m[22m} [1m[32mdetails.module.2.chunk.js, details.module.2.chunk.js.map[39m[22m () 12 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetails.module.3[39m[22m} [1m[32mdetails.module.3.chunk.js, details.module.3.chunk.js.map[39m[22m () 17.8 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetails.module.4[39m[22m} [1m[32mdetails.module.4.chunk.js, details.module.4.chunk.js.map[39m[22m () 12.7 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetails.module.5[39m[22m} [1m[32mdetails.module.5.chunk.js, details.module.5.chunk.js.map[39m[22m () 13.1 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetalle.module[39m[22m} [1m[32mdetalle.module.chunk.js, detalle.module.chunk.js.map[39m[22m () 105 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetalle.module.0[39m[22m} [1m[32mdetalle.module.0.chunk.js, detalle.module.0.chunk.js.map[39m[22m () 13.4 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mdetalle.module.1[39m[22m} [1m[32mdetalle.module.1.chunk.js, detalle.module.1.chunk.js.map[39m[22m () 21 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33memployees.module[39m[22m} [1m[32memployees.module.chunk.js, employees.module.chunk.js.map[39m[22m () 4.34 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mentidad.module[39m[22m} [1m[32mentidad.module.chunk.js, entidad.module.chunk.js.map[39m[22m () 5.51 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33menum.module[39m[22m} [1m[32menum.module.chunk.js, enum.module.chunk.js.map[39m[22m () 2.31 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mexpulsiones.module[39m[22m} [1m[32mexpulsiones.module.chunk.js, expulsiones.module.chunk.js.map[39m[22m () 12.9 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mfactura.module[39m[22m} [1m[32mfactura.module.chunk.js, factura.module.chunk.js.map[39m[22m () 2.33 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mficha_alumno.module[39m[22m} [1m[32mficha_alumno.module.chunk.js, ficha_alumno.module.chunk.js.map[39m[22m () 22.3 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mgestion.module[39m[22m} [1m[32mgestion.module.chunk.js, gestion.module.chunk.js.map[39m[22m () 3.54 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mgroups.module[39m[22m} [1m[32mgroups.module.chunk.js, groups.module.chunk.js.map[39m[22m () 2.09 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mheadteachers.module[39m[22m} [1m[32mheadteachers.module.chunk.js, headteachers.module.chunk.js.map[39m[22m () 4.05 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mhome.module[39m[22m} [1m[32mhome.module.chunk.js, home.module.chunk.js.map[39m[22m () 4.24 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mhoras-asignadas.module[39m[22m} [1m[32mhoras-asignadas.module.chunk.js, horas-asignadas.module.chunk.js.map[39m[22m () 22.1 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33minline[39m[22m} [1m[32minline.bundle.js, inline.bundle.js.map[39m[22m (inline) 5.83 kB [1m[33m[entry][39m[22m[1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33minscripcion.module[39m[22m} [1m[32minscripcion.module.chunk.js, inscripcion.module.chunk.js.map[39m[22m () 2.41 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlist.module[39m[22m} [1m[32mlist.module.chunk.js, list.module.chunk.js.map[39m[22m () 10 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlist.module.0[39m[22m} [1m[32mlist.module.0.chunk.js, list.module.0.chunk.js.map[39m[22m () 9.15 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlist.module.1[39m[22m} [1m[32mlist.module.1.chunk.js, list.module.1.chunk.js.map[39m[22m () 10.2 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlist.module.2[39m[22m} [1m[32mlist.module.2.chunk.js, list.module.2.chunk.js.map[39m[22m () 9.45 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlist.module.3[39m[22m} [1m[32mlist.module.3.chunk.js, list.module.3.chunk.js.map[39m[22m () 14.1 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlist.module.4[39m[22m} [1m[32mlist.module.4.chunk.js, list.module.4.chunk.js.map[39m[22m () 7.99 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlist.module.5[39m[22m} [1m[32mlist.module.5.chunk.js, list.module.5.chunk.js.map[39m[22m () 10.6 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlista-confirmar.module[39m[22m} [1m[32mlista-confirmar.module.chunk.js, lista-confirmar.module.chunk.js.map[39m[22m () 7.56 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlista.module[39m[22m} [1m[32mlista.module.chunk.js, lista.module.chunk.js.map[39m[22m () 24.4 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlista.module.0[39m[22m} [1m[32mlista.module.0.chunk.js, lista.module.0.chunk.js.map[39m[22m () 22.5 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlista.module.1[39m[22m} [1m[32mlista.module.1.chunk.js, lista.module.1.chunk.js.map[39m[22m () 7.15 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlista.module.2[39m[22m} [1m[32mlista.module.2.chunk.js, lista.module.2.chunk.js.map[39m[22m () 19.8 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlista.module.3[39m[22m} [1m[32mlista.module.3.chunk.js, lista.module.3.chunk.js.map[39m[22m () 10.3 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlistados-pantalla.module[39m[22m} [1m[32mlistados-pantalla.module.chunk.js, listados-pantalla.module.chunk.js.map[39m[22m () 12.2 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlistados-pdf.module[39m[22m} [1m[32mlistados-pdf.module.chunk.js, listados-pdf.module.chunk.js.map[39m[22m () 16.5 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlocation.module[39m[22m} [1m[32mlocation.module.chunk.js, location.module.chunk.js.map[39m[22m () 2.58 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mlogin.module[39m[22m} [1m[32mlogin.module.chunk.js, login.module.chunk.js.map[39m[22m () 7.75 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mmain[39m[22m} [1m[32mmain.bundle.js, main.bundle.js.map[39m[22m (main) 79.5 kB [1m[33m[initial][39m[22m[1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mmain.module[39m[22m} [1m[32mmain.module.chunk.js, main.module.chunk.js.map[39m[22m () 5.28 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mmovimiento.module[39m[22m} [1m[32mmovimiento.module.chunk.js, movimiento.module.chunk.js.map[39m[22m () 2.41 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mofertasdetrabajo.module[39m[22m} [1m[32mofertasdetrabajo.module.chunk.js, ofertasdetrabajo.module.chunk.js.map[39m[22m () 2.24 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mofertastr.module[39m[22m} [1m[32mofertastr.module.chunk.js, ofertastr.module.chunk.js.map[39m[22m () 2.46 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mpeticiones.module[39m[22m} [1m[32mpeticiones.module.chunk.js, peticiones.module.chunk.js.map[39m[22m () 23.6 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mpolyfills[39m[22m} [1m[32mpolyfills.bundle.js, polyfills.bundle.js.map[39m[22m (polyfills) 204 kB [1m[33m[initial][39m[22m[1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mpresente.module[39m[22m} [1m[32mpresente.module.chunk.js, presente.module.chunk.js.map[39m[22m () 31.5 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mproductocomercial.module[39m[22m} [1m[32mproductocomercial.module.chunk.js, productocomercial.module.chunk.js.map[39m[22m () 84.8 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mproductos.module[39m[22m} [1m[32mproductos.module.chunk.js, productos.module.chunk.js.map[39m[22m () 43.5 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mprofesorcontrol.module[39m[22m} [1m[32mprofesorcontrol.module.chunk.js, profesorcontrol.module.chunk.js.map[39m[22m () 13.4 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mprofesores.module[39m[22m} [1m[32mprofesores.module.chunk.js, profesores.module.chunk.js.map[39m[22m () 16.1 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mprofesoresTareas.module[39m[22m} [1m[32mprofesoresTareas.module.chunk.js, profesoresTareas.module.chunk.js.map[39m[22m () 45.3 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mpruebas.module[39m[22m} [1m[32mpruebas.module.chunk.js, pruebas.module.chunk.js.map[39m[22m () 2.27 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mregion.module[39m[22m} [1m[32mregion.module.chunk.js, region.module.chunk.js.map[39m[22m () 2.31 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mscripts[39m[22m} [1m[32mscripts.bundle.js, scripts.bundle.js.map[39m[22m (scripts) 433 kB [1m[33m[initial][39m[22m[1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mseguridad.module[39m[22m} [1m[32mseguridad.module.chunk.js, seguridad.module.chunk.js.map[39m[22m () 2.1 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33msetting.module[39m[22m} [1m[32msetting.module.chunk.js, setting.module.chunk.js.map[39m[22m () 2.08 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mstyles[39m[22m} [1m[32mstyles.bundle.js, styles.bundle.js.map[39m[22m (styles) 623 kB [1m[33m[initial][39m[22m[1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mtrabajadores-detalle.module[39m[22m} [1m[32mtrabajadores-detalle.module.chunk.js, trabajadores-detalle.module.chunk.js.map[39m[22m () 60.3 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mtrabajadores-lista.module[39m[22m} [1m[32mtrabajadores-lista.module.chunk.js, trabajadores-lista.module.chunk.js.map[39m[22m () 15.2 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mtransfers.module[39m[22m} [1m[32mtransfers.module.chunk.js, transfers.module.chunk.js.map[39m[22m () 20.6 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mtransfersModificar.module[39m[22m} [1m[32mtransfersModificar.module.chunk.js, transfersModificar.module.chunk.js.map[39m[22m () 18.4 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mtransferssinasignar.module[39m[22m} [1m[32mtransferssinasignar.module.chunk.js, transferssinasignar.module.chunk.js.map[39m[22m () 12.1 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33musuario.module[39m[22m} [1m[32musuario.module.chunk.js, usuario.module.chunk.js.map[39m[22m () 2.26 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mvacaciones.module[39m[22m} [1m[32mvacaciones.module.chunk.js, vacaciones.module.chunk.js.map[39m[22m () 295 kB [1m[32m [rendered][39m[22m[0m
+[0mchunk {[1m[33mvendor[39m[22m} [1m[32mvendor.bundle.js, vendor.bundle.js.map[39m[22m (vendor) 8.09 MB [1m[33m[initial][39m[22m[1m[32m [rendered][39m[22m[0m
+¨Desea terminar el trabajo por lotes (S/N)? 

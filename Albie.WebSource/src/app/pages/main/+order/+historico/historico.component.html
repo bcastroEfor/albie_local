@@ -1,0 +1,32 @@
+<div id="content">
+    <div class="row">
+        <!-- Tabla grupos -->
+        <div class="col-md-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <!-- <h6><span style="left: 10px;" class="widget-icon top4">Pedidos</span></h6> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <div class="widget-body no-padding">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <abp-datatable #orders title="Histórico de Pedidos" [columns]="columnsOrder"
+                                    tableClass="table-sm table-hover table-stripped" [paginationId]="'ht-g-a-dt-1'"
+                                    [urlData]="'historicoPedido/GetCollectionListHistoricoPedidos'">
+                                </abp-datatable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

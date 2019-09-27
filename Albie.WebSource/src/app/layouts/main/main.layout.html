@@ -1,0 +1,235 @@
+<!-- <mat-drawer-container autosize class="fadeIn">
+    <mat-drawer #drawer class="text-green visible" mode="side"
+        (mouseenter)="isDrawerOpened = true; calculateNavBarLeftSpace()"
+        (mouseleave)="isDrawerOpened = false; calculateNavBarLeftSpace()">
+
+        <ul class="list-group fa-ul" #menu>
+            <li class="list-group-item list-group-item-action pb-0 pt-0 padding-right5 top10" [style.minHeight.px]="navBarHeight">
+                <a class="logo navbar-brand m-0 pr-2">
+                    <img class="d-block mx-auto" src="" />
+                </a>
+            </li>
+
+            <ng-container *ngFor="let i of menuItems">
+                <li *ngIf="i.hasChildren" class="list-group-item white-color list-group-item-action"
+                    dropdown>
+                    <a dropdownToggle  mdbRippleRadius [ngClass]="isDrawerOpened ? '' : 'caret'" class="white-color nav-link dropdown-toggle waves-light">
+                        <i class="fa-fw" [ngClass]="isDrawerOpened ? i.iconClass : 'fa-14 ' + i.iconClass"></i>
+                        <div class="label-container"
+                            [ngClass]="isDrawerOpened ? 'label-shown' : 'label-hidden'">
+                            <span>{{i.label | translate}}</span>
+                        </div>
+                    </a>
+                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                        <a *ngFor="let ii of i.children" class="white-color dropdown-item waves-light" mdbRippleRadius
+                            [routerLinkActive]="ii.routerLinkActive" [routerLink]="ii.routerLink">
+                            <i class="fa-fw" [ngClass]="ii.iconClass"></i>
+                            <span>{{ii.label | translate}}</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li *ngIf="!i.hasChildren" class="list-group-item white-color list-group-item-action"
+                    mdbRippleRadius>
+                    <a class="nav-link white-color" [routerLinkActive]="i.routerLinkActive" [routerLink]="i.routerLink">
+                            <i class="fa-fw" [ngClass]="isDrawerOpened ? i.iconClass : 'fa-14 ' + i.iconClass"></i>
+                        <div class="label-container"
+                            [ngClass]="isDrawerOpened ? 'label-shown' : 'label-hidden'">
+                            <span>{{i.label | translate}}</span>
+                        </div>
+                    </a>
+                </li>
+            </ng-container>
+        </ul>
+    </mat-drawer>
+
+    <div>
+        <mdb-navbar SideClass="wow fadeInDown navbar fixed-top navbar-expand-sm navbar-dark scrolling-navbar ie-nav pt-0 pb-0 background-white"
+            [containerInside]="false" #navBar>
+            <logo class="pl-2 pr-2">
+                <i class="text-white fa fa-spin fa-refresh invisible-animate" [attr.invisible]="isApiIddle"></i>
+            </logo>
+            <links>
+                <ul class="navbar-nav mr-auto col" >
+                    <li class="nav-item waves-light mr-1" [ngClass]="isDrawerOpened ? 'active' : ''" mdbRippleRadius>
+                        <a class="nav-link" (click)="toogleMenu($event)" style="display: none">
+                            <i class="fa fa-lg fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>            
+
+                <abp-breadcrumb class="d-sm-none d-md-none d-lg-none d-xl-block" ulClass="navbar-nav mr-2" liClass="nav-item waves-light" aClass="nav-link"
+                    currentRouteIcon="fa fa-map-marker" [includeParams]="false"></abp-breadcrumb>
+                <abp-language-selector ulWrapperClass="navbar-nav" liSelectedClass="nav-link" [showIcons]="false"
+                    [showIconNames]="true">
+                </abp-language-selector>
+                <a href="javascript:void(0)" class="logOut text-white green-ideal nav-link waves-light pl-3 pr-3"
+                    mdbRippleRadius (click)="logOut()">
+                    <i class="fa fa-power-off text-white"></i>
+                </a>
+            </links>
+
+        </mdb-navbar>
+        <main class="pb-5 pt-6">
+            <div class="pb-3">
+                <div class="container-fluid">
+
+                    <div class="pl-2 pr-2 wow fadeIn">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</mat-drawer-container> -->
+
+<mat-drawer-container autosize class="fadeIn">
+    <mat-drawer #drawer class="text-green" mode="side">
+
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-action pb-0 pt-0">
+                <a class="logo navbar-brand">
+                    <img class="d-block mx-auto" src="../../../assets/img/logos/logo.png" />
+                </a>
+            </li>
+
+            <ng-container *ngFor="let i of menuItems">
+                <li *ngIf="i.hasChildren" class="list-group-item white-color list-group-item-action" dropdown>
+                    <a dropdownToggle mdbRippleRadius [ngClass]="isDrawerOpened ? '' : 'caret'" class="text-left white-color nav-link dropdown-toggle waves-light">
+                        <i class="fa-fw" [ngClass]="isDrawerOpened ? i.iconClass : 'fa-14 ' + i.iconClass"></i>
+                        <div class="label-container" [ngClass]="isDrawerOpened ? 'label-shown' : 'label-hidden'">
+                            <span>{{i.label | translate}}</span>
+                        </div>
+                    </a>
+                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                        <a *ngFor="let ii of i.children" class="white-color dropdown-item waves-light" mdbRippleRadius
+                            [routerLinkActive]="ii.routerLinkActive" [routerLink]="ii.routerLink">
+                            <i class="fa-fw" [ngClass]="ii.iconClass"></i>
+                            <span>{{ii.label | translate}}</span>
+                        </a>
+                    </div>
+                </li>
+
+                <li *ngIf="!i.hasChildren" class="list-group-item white-color list-group-item-action" mdbRippleRadius>
+                    <a class="nav-link white-color text-left" [routerLinkActive]="i.routerLinkActive" [routerLink]="i.routerLink">
+                        <i class="fa-fw" [ngClass]="isDrawerOpened ? i.iconClass : 'fa-14 ' + i.iconClass"></i>
+                        <div class="label-container" [ngClass]="isDrawerOpened ? 'label-shown' : 'label-hidden'">
+                            <span>{{i.label | translate}}</span>
+                        </div>
+                    </a>
+                </li>
+            </ng-container>
+        </ul>
+    </mat-drawer>
+    <div>
+        <mdb-navbar SideClass="wow fadeInDown navbar fixed-top navbar-expand-sm navbar-dark scrolling-navbar ie-nav pt-0 pb-0 background-white"
+            [containerInside]="false" #navBar>
+            <logo class="pl-2 pr-2">
+                <i class="text-white fa fa-spin fa-refresh invisible-animate" [attr.invisible]="isApiIddle"></i>
+            </logo>
+            <links>
+                <ul class="navbar-nav mr-auto col" [ngClass]="drawer.opened ? 'left-menu' : 'left-menu-0'">
+                    <li class="nav-item waves-light mr-1" [ngClass]="drawer.opened ? 'active' : ''" mdbRippleRadius>
+                        <a class="nav-link" (click)="toogleMenu($event)">
+                            <i class="fa fa-lg fa-bars"></i>
+                        </a>
+                    </li>
+                </ul>
+                
+                <ul class="navbar-nav">
+                    <li class="nav-item waves-light active ml-1">
+                        <a mdbRippleRadius class="logOut text-white green-ideal nav-link waves-light pl-3 pr-3" (click)="openCart()">
+                            <i class="fa fa-shopping-cart text-white"></i>
+                        </a>
+                    </li>
+                </ul>
+                <mat-accordion style="position: absolute; right: 0; top: 65px;">
+                    <mat-expansion-panel [hideToggle]="true" [expanded]="opened">
+                        <table class="table">
+                            <tr *ngFor="let product of products">
+                                <td><img src="../../../assets/img/products/{{product.photo}}" style="width: 25px; height: 25px"></td>
+                                <td>{{product.description}}</td>
+                                <td>{{product.totalUnits}} {{product.unitMeasureProduct.code}}</td>
+                                <td>{{product.totalPrice | number : '1.2-2'}} €</td>
+                                <td style="padding: 0 .75rem;">
+                                    <button class="btn-danger btn" (click)="clearProduct(product)" style="padding: .185rem .375rem;">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </table>
+                        Total: {{total | number: '1.2-2'}} € <button class="btn btn-albie" (click)="openModalList()">Guardar
+                            lista</button>
+                    </mat-expansion-panel>
+                </mat-accordion>
+
+                <abp-language-selector ulWrapperClass="navbar-nav" liSelectedClass="nav-link text-white" [showIcons]="false"
+                    [showIconNames]="true"></abp-language-selector>
+
+                <abp-breadcrumb class="hidden-xs" ulClass="navbar-nav mr-2" liClass="nav-item waves-light" aClass="nav-link"
+                    currentRouteIcon="fa fa-map-marker"></abp-breadcrumb>
+                <ul class="navbar-nav">
+                    <li class="nav-item waves-light active ml-1">
+                        <a href="javascript:void(0)" class="logOut text-white green-ideal nav-link waves-light pl-3 pr-3"
+                            mdbRippleRadius (click)="logOut()">
+                            <i class="fa fa-power-off text-white"></i>
+                        </a>
+                    </li>
+                </ul>
+            </links>
+
+        </mdb-navbar>
+        <!-- Main -->
+        <main class="pb-5 pt-5">
+            <div class="pb-3">
+                <div class="container-fluid">
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <!--<apt-breadcrumb ulClass="d-block navbar-nav"
+                                            liClass="d-inline-block mr-1 nav-item waves-light"
+                                            aClass="nav-link p-0"
+                                            currentRouteIcon="fa fa-map-marker"></apt-breadcrumb>-->
+                            <abp-pagetitle titleClass="text-center blue-text font-weight-bold text-uppercase"></abp-pagetitle>
+                        </div>
+                    </div>
+
+                    <div class="pl-2 pr-2 wow fadeIn">
+                        <router-outlet></router-outlet>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</mat-drawer-container>
+<div mdbModal #saveListModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="saveListModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="saveListModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Guardar lista
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <mat-form-field>
+                        <input matInput placeholder="Nombre de la lista" [(ngModel)]="nombreLista">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="saveListModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    No
+                </button>
+                <button type="button" class="btn btn-albie" (click)="saveList()">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

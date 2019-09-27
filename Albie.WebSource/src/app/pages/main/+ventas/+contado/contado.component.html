@@ -1,0 +1,112 @@
+<div id="content">
+    <div class="row">
+        <!-- Tabla grupos -->
+        <div class="col-md-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="widget-toolbar" role="menu">
+                                        <mat-form-field>
+                                            <mat-label>Selecciona</mat-label>
+                                            <mat-select [(ngModel)]="modeSelected">
+                                                <mat-option *ngFor="let mode of modeSelect" [value]="mode.value">
+                                                    {{mode.viewValue}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <input type="month" [(ngModel)]="date" (change)="getTdDays($event)">
+                                        <app-button (onClick)="getList()" [tooltipPosition]="'left'" [tooltipLabel]="'Buscar'"
+                                            [iconCssClass]="'fa fa-lg fa-refresh'" [cssClass]="'btn btn-default'"></app-button>
+                                        <app-button (onClick)="AddLineModal.show()" [tooltipPosition]="'right'"
+                                            [tooltipLabel]="'Añadir venta'" [iconCssClass]="'fa fa-lg fa-plus'"
+                                            [cssClass]="'btn btn-default'"></app-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="widget-body no-padding">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="table-responsive">
+                                <table class="table" *ngIf="resources">
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Concepto</th>
+                                        <th>Precios /IVA</th>
+                                        <th>Servicios totales</th>
+                                        <th>Ventas totales</th>
+                                        <th *ngFor="let date of resources.dates">
+                                            {{date.label}}
+                                        </th>
+                                    </tr>
+                                    <tr *ngFor="let rate of resources.customerRates">
+                                        <td>{{rate.itemNo}}</td>
+                                        <td>{{rate.product.description}}</td>
+                                        <td>{{rate.unitPrice}}</td>
+                                        <td>{{rate.serviciosTotales}}</td>
+                                        <td>{{rate.ventasTotales}}</td>
+                                        <td *ngFor="let sale of rate.salesCenters">
+                                            {{sale.quantity}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<div mdbModal #AddLineModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="orderModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="AddLineModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Añadir líneas
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <abp-autocomplete #autoComplete class="md-form" [label]="'Busca un producto'" [inputId]="'productName'"
+                                url="product/GetProductosSelectAutocomplete" [(filter)]="productName" [showIcon]="false"
+                                (onSelect)="selectProduct($event)" [pageSize]="15">
+                            </abp-autocomplete>
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field>
+                                <input matInput disabled [(ngModel)]="item.postingDate" [matDatepicker]="postingDate"
+                                    placeholder="Elige fecha">
+                                <mat-datepicker-toggle matSuffix [for]="postingDate"></mat-datepicker-toggle>
+                                <mat-datepicker [disabled]="false" #postingDate></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <mat-form-field>
+                            <input matInput placeholder="Cantidad" [(ngModel)]="item.quantity">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="AddLineModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    Cerrar
+                </button>
+                <app-button [cssClass]="'btn btn-default'" (onClick)="addSaleCenter()" [label]="'Save'"
+                    [isLoadingOnClick]="true"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

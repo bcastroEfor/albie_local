@@ -1,0 +1,261 @@
+$ideal-color-primary: (
+  "lighten-5":  #fac29a,
+  "lighten-4":  #f9b382,
+  "lighten-3":  #f8a46a,
+  "lighten-2":  #f69652,
+  "lighten-1":  #f58739,
+  "base":    #f47821,
+  "darken-1":   #f06a0c, 
+  "darken-2":   #d75f0b,
+  "darken-3":   #bf5409,
+  "darken-4":   #a74a08
+);
+mdb-navbar::ng-deep {
+  .green-ideal {
+    background-color: map-get($ideal-color-primary, 'base') !important;
+  }
+
+  .text-green {
+    color: map-get($ideal-color-primary, 'base') !important;
+  }
+
+  .visible {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .navbar {
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-property: padding-left;
+  }
+
+  .navbar.navbar-dark .breadcrumb .nav-item .nav-link,
+  .navbar.navbar-dark .navbar-nav .nav-item .nav-link,
+  .navbar-dark .navbar-nav .nav-link {
+    color: #36393e !important;
+  }
+
+  nav {
+    //height: 90px;
+    height: 65px;
+  }
+
+  .navbar {
+    padding-right: 0 !important;
+  }
+
+  .background-white {
+    background-color: #bdbec0 !important;
+  }
+
+  .white-color {
+    color: #fff !important;
+  }
+
+  .logOut {
+    height: 65px;
+    width: 72px;
+    position: relative;
+  }
+
+  .logOut i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -9px;
+    margin-top: -7px;
+  }
+}
+
+mat-drawer-container::ng-deep {
+  position: absolute;
+  min-width: 100%;
+  min-height: 100%;
+  max-width: 100%;
+  
+  mat-drawer {
+    transform: translate3d(0,0,0);
+
+    .label-container {
+      display: inline-block;
+      vertical-align: bottom;
+      overflow: hidden;
+      transition: max-width .5s ease;
+      white-space: nowrap;
+
+      &.label-hidden {
+        max-width: 0px;
+      }
+
+      &.label-shown {
+        max-width: 260px;
+      }
+    }
+    .dropdown-item {
+      span {
+        white-space: initial;
+      }
+    }
+
+    i {
+      transition: font-size .5s ease;
+    }
+    .fa-14 {
+      font-size: 1.4em !important;
+    }
+  }
+
+
+  .caret:after {
+    display: none !important;
+  }
+
+  .mat-drawer {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    background-color: #36393e !important;
+
+    .list-group-item.open.show {
+      z-index: 2;
+      background-color: map-get($ideal-color-primary, 'darken-2') !important;
+    }
+
+    .logo.navbar-brand {
+      width: 100%;
+
+      img {
+        max-height: 70px;
+      }
+    }
+
+    .nav-link {
+      color: #fff !important;
+    }
+  }
+
+  .mat-drawer-content {
+    background-color: #fff;
+    position: absolute;
+    min-width: 100%;
+    min-height: 100%;
+    margin-left: 0 !important;
+    transition-duration: 0.4s;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-property: transform, margin-left, margin-right, padding-left, padding-right;
+
+    abp-breadcrumb ul > li:not(:last-child) > a {
+      border-right: 1px solid #bfbfbf;
+    }
+
+    abp-breadcrumb .nav-link {
+      padding: 0 1rem !important;
+      font-weight: bold;
+    }
+
+    .pt-6 {
+      padding-top: 6rem !important;
+    }
+  }
+
+  nav abp-autocomplete {
+    position: relative;
+    height: 0;
+
+    input[type="text"] {
+      height: 11px;
+      border: 1px solid #bdbdbd;
+      padding: 15px;
+      background-color: #fff;
+      position: relative;
+      bottom: 3px;
+    }
+
+    button {
+      right: -25px !important;
+    }
+
+    label {
+      padding-left: 10px;
+    }
+
+    label.active {
+      margin-top: 10px;
+    }
+  }
+
+  .date-input {
+    border: 1px solid #bdbdbd;
+    border-right: none;
+    position: relative;
+    top: 4px;
+    background-color: #fff;
+  }
+
+  .input-number {
+    top: 4px;
+    width: 60px;
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #bdbdbd;
+    border-right: none;
+  }
+
+  .date-input input,
+  .input-number input {
+    padding-top: 4px;
+    border-bottom: none;
+    text-align: center;
+  }
+
+  .date-input input,
+  .input-number input:focus {
+    border-bottom: none;
+  }
+
+  .col-md-7 > div {
+    height: 43px !important;
+    position: relative;
+    top: 18px;
+  }
+
+  abp-breadcrumb ul {
+    position: relative;
+    top: 20px;
+  }
+
+  abp-language-selector ul {
+    position: relative;
+    top: 12px;
+    font-weight: bold;
+  }
+
+  .top-7 {
+    top: -7px;
+  }
+
+  .padding-right5 {
+    padding-right: 0px !important;
+  }
+
+  .top10 {
+    position: relative;
+    top: 10px;
+  }
+
+  .fa-ul {
+    margin-left: 0px !important;
+    list-style-type: none;
+  }
+
+  .widthSemanas
+  {
+    width: 45px;
+  }
+
+  .left-menu{
+    left: 46px;
+  }
+
+  .left-menu-0{
+    left: 0;
+  }
+}

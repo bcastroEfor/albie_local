@@ -1,0 +1,203 @@
+<div id="content">
+    <div class="row">
+        <!-- Tabla grupos -->
+        <div class="col-md-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="widget-toolbar" role="menu">
+                                        <mat-form-field>
+                                            <mat-label>Selecciona</mat-label>
+                                            <mat-select [(ngModel)]="modeSelected">
+                                                <mat-option *ngFor="let mode of modeSelect" [value]="mode.value">
+                                                    {{mode.viewValue}}
+                                                </mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                        <input type="month" [(ngModel)]="date" (change)="getTdDays($event)">
+                                        <app-button (onClick)="getList()" [tooltipPosition]="'left'" [tooltipLabel]="'Buscar'"
+                                            [iconCssClass]="'fa fa-lg fa-refresh'" [cssClass]="'btn btn-default'"></app-button>
+                                        <app-button (onClick)="AddLineModal.show()" [tooltipPosition]="'right'" [tooltipLabel]="'Añadir venta'"
+                                            [iconCssClass]="'fa fa-lg fa-plus'" [cssClass]="'btn btn-default'"></app-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="widget-body no-padding">
+                    <div class="row">
+                        <div class="col-8">
+                            <div class="table-responsive">
+                                <table class="table" *ngIf="resources">
+                                    <tr>
+                                        <th>Código</th>
+                                        <th>Concepto</th>
+                                        <th>Precios /IVA</th>
+                                        <th>Servicios totales</th>
+                                        <th>Ventas totales</th>
+                                        <th *ngFor="let date of resources.dates">
+                                            {{date.label}}
+                                        </th>
+                                    </tr>
+                                    <tr *ngFor="let rate of resources.customerRates">
+                                        <td>{{rate.itemNo}}</td>
+                                        <td>{{rate.product.description}}</td>
+                                        <td>{{rate.unitPrice}}</td>
+                                        <td>{{rate.serviciosTotales}}</td>
+                                        <td>{{rate.ventasTotales}}</td>
+                                        <td *ngFor="let sale of rate.salesCenters">
+                                            {{sale.quantity}}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <!-- ////////////////////////////////////////////// -->
+                            <!-- <div class="table-responsive" *ngIf="planification_cod >= 0">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                <ul class="pager no-margin">
+                                                    <li class="previous">
+                                                        <app-button [disabled]="loading || loadingWeeks" (onClick)="setPrev()" [tooltipPosition]="'right'" [tooltipLabel]="'Previous | translate'" [iconCssClass]="'glyphicon glyphicon-arrow-left'" [cssClass]="'btn btn-circle btn-primary pull-left'"></app-button>
+                                                    </li>
+                                                    <li class="font-lg" *ngIf="planification_cod == 2">
+                                                        {{getMonthCode() | translate}}, {{pickedYear}}
+                                                    </li>
+                                                    <li class="font-lg" *ngIf="planification_cod < 2">
+                                                        {{pickedWeek + 1}}, {{weeks[pickedWeek]?.Label}}
+                                                    </li>
+                                                    <li class="next">
+                                                        <app-button [disabled]="loading || loadingWeeks" (onClick)="setNext()" [tooltipPosition]="'left'" [tooltipLabel]="'Next | translate'"
+                                                            [iconCssClass]="'glyphicon glyphicon-arrow-right'" [cssClass]="'btn btn-circle btn-primary pull-right'"
+                                                            [isLoadingOnClick]="true"></app-button>
+                                                    </li>
+                                                </ul>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped">
+                                    <thead>
+                                        <tr class="no-wrap">
+                                            <th>{{'Resource' | translate}}</th>
+                                            <th colspan="3" class="text-center td-size-date" *ngFor="let d of dates; let i=index">{{d |
+                                                date:'dd-MM-yyyy'}}</th>
+                                            <th>{{'Total' | translate}}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngIf="!loading && (resources && resources.length > 0)">
+                                            <th>{{'Hours' | translate}}: </th>
+                                            <ng-container *ngFor="let d of dates; let i=index">
+                                                <th class="text-center">Planificado</th>
+                                                <th class="text-center">Planificado <span class="no-wrap">(todos)</span></th>
+                                                <th class="text-center">Capacidad</th>
+                                            </ng-container>
+                                            <td></td>
+                                        </tr>
+                                        <tr *ngIf="loading">
+                                            <th class="text-center" [attr.colspan]="2 + (dates.length * 3)">
+                                                {{'Loading' | translate}}
+                                            </th>
+                                        </tr>
+                                        <tr *ngIf="!loading && (!resources || resources.length == 0)">
+                                            <th class="text-center" [attr.colspan]="2 + (dates.length * 3)">
+                                                {{'NoData' | translate}}
+                                            </th>
+                                        </tr>
+                                        <tr *ngFor="let r of resources; let j=index">
+                                            <ng-container *ngFor="let d of dates; let i=index">
+                                                <td (click)="openListDayResource(r.Resource_No, d, r.Resource_Name,r.AllowModify)" class="xs-td smart-form text-middle border-right-0"
+                                                    *ngIf="r.Dates[i].SingleItem==null || !r.AllowModify">
+                                                    <span class="text-enfasis" title="{{'PlannedForThisProyect' | translate}}">
+                                                        {{r.Dates[i].Quantity}}
+                                                    </span>
+                                                </td>
+                                                <td class="xs-td smart-form text-middle border-right-0" *ngIf="r.Dates[i].SingleItem!=null && r.AllowModify">
+                                                    <label class="input col-md-6" title="{{'PlannedForThisProyect' | translate}}">
+                                                        <input type="number" [(ngModel)]="r.Dates[i].SingleItem.Quantity" class="text-center"
+                                                            (change)="InputQtyChanged(r.Dates[i].SingleItem,r.Resource_No, r.Dates[i])" />
+                                                    </label>
+                                                    <div class="col-md-6 no-wrap">
+                                                        <a (click)="openListDayResource(r.Resource_No, d, r.Resource_Name,r.AllowModify)"><i
+                                                                class="fa fa-lg fa-info"></i></a>
+                                                    </div>
+                                                </td>
+                                                <td (click)="openListDayResource(r.Resource_No, d, r.Resource_Name,r.AllowModify)" class="xs-td smart-form text-middle border-right-0">
+                                                    <span title="{{'PlannedForAllProyects' | translate}}">
+                                                        {{r.Dates[i].QuantityAll}}
+                                                    </span>
+                                                </td>
+                                                <td (click)="openListDayResource(r.Resource_No, d, r.Resource_Name,r.AllowModify)" class="xs-td smart-form text-middle">
+                                                    <span title="{{'Capacity' | translate}}">
+                                                        {{r.Dates[i].Capacity}}
+                                                    </span>
+                                                </td>
+                                            </ng-container>
+                                            <td class="xs-td smart-form text-middle">
+                                                {{sumQuantity(r)}}
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div> -->
+
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<div mdbModal #AddLineModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="orderModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="AddLineModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Añadir líneas
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <abp-autocomplete #autoComplete class="md-form" [label]="'Busca un producto'" [inputId]="'productName'"
+                            url="product/GetProductosSelectAutocomplete" [(filter)]="productName" [showIcon]="false"
+                            (onSelect)="selectProduct($event)" [pageSize]="15">
+                        </abp-autocomplete>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field>
+                            <input matInput disabled [(ngModel)]="item.postingDate" [matDatepicker]="postingDate" placeholder="Elige fecha">
+                            <mat-datepicker-toggle matSuffix [for]="postingDate"></mat-datepicker-toggle>
+                            <mat-datepicker [disabled]="false" #postingDate></mat-datepicker>
+                        </mat-form-field>
+                    </div>                        
+                        <mat-form-field>
+                            <input matInput placeholder="Cantidad" [(ngModel)]="item.quantity">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="AddLineModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    Cerrar
+                </button>
+                <app-button [cssClass]="'btn btn-default'"(onClick)="addSaleCenter()" [label]="'Save'" [isLoadingOnClick]="true"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

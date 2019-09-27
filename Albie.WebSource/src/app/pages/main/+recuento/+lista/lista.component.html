@@ -1,0 +1,104 @@
+<div id="content">
+    <div class="row">
+        <!-- Tabla grupos -->
+        <div class="col-md-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <div class="widget-body no-padding">
+                        <div class="row">
+                            <div class="col-8">
+                                <abp-datatable #hojas [launchOnStartup]="true" title="Hojas recuento" [columns]="columnsList"
+                                    tableClass="table-sm table-hover table-stripped" [paginationId]="'dt-1'" [urlData]="'hojaRecuento/GetCollectionListHojaRecuentos'"
+                                    [urlDataParams]="{idR: idRecuento}" [showAddItemBtn]="true" [addItemBtnTooltip]="'Modificar cantidades'" (addItemBtnClick)="modalCantidades()">
+                                </abp-datatable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<div mdbModal #AddLineModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="orderModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="AddLineModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Añadir líneas
+                </h4>
+                <button type="button" class="btn btn-default" (click)="addLineToModal()">Añadir linea</button>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <table class="table">
+                            <tr>
+                                <td>Producto</td>
+                                <td>Cantidad</td>
+                            </tr>
+                            <tr *ngFor="let product of products">
+                                <td><small>{{product.product.description}}</small></td>
+                                <td>
+                                    <mat-form-field>
+                                        <input matInput placeholder="Cantidad" [(ngModel)]="product.quantity">
+                                    </mat-form-field>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="AddLineModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    Cerrar
+                </button>
+                <app-button [cssClass]="'btn btn-default'" [label]="'Save'" [isLoadingOnClick]="true" (click)="saveHojas()"></app-button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #productSelectModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="orderModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="productSelectModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Seleccionar producto
+                </h4>
+            </div>
+            <div class="modal-body">
+                <abp-autocomplete #autoComplete class="md-form" [label]="'Busca un producto'" [inputId]="'productName'" url="product/GetProductosSelectAutocomplete"
+                    [(filter)]="productName" [showIcon]="false" (onSelect)="selectProduct($event)" [pageSize]="15">
+                </abp-autocomplete>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="productSelectModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    Cerrar
+                </button>
+                <app-button [cssClass]="'btn btn-default'" [label]="'Save'" [isLoadingOnClick]="true" (click)="saveHojas()"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

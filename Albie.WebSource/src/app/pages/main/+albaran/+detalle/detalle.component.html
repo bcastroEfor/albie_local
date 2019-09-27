@@ -1,0 +1,119 @@
+<div id="content">
+    <div class="row">
+        <!-- Tabla grupos -->
+        <div class="col-md-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <div class="widget-body no-padding">
+                        <div class="col-md-12">
+                            <abp-datatable #orders title="Pedidos" [columns]="columnsList" tableClass="table-sm table-hover table-stripped"
+                                [paginationId]="'ht-g-a-dt-1'" [urlData]="'order/GetCollectionListCabeceras'">
+                            </abp-datatable>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<div mdbModal #orderModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="orderModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="orderModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Productos
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <table class="table">
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Total</td>
+                            <td>Restante</td>
+                            <td>Recibida</td>
+                            <td>Precio</td>
+                        </tr>
+                        <tr *ngFor="let product of products">
+                            <td>{{product.description}}</td>
+                            <td>{{product.quantityToReceive}}</td>
+                            <td>{{product.OutstandingQuantity}}</td>
+                            <td>
+                                <mat-form-field>
+                                    <input matInput placeholder="Cantidad recibida" [(ngModel)]="product.quantityReceived">
+                                </mat-form-field>
+                            </td>
+                            <td *ngFor="let rate of product.providerRates"><span>{{rate.directUnitCost}}</span></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-6">
+                    <div class="row">
+                        <div class="col-5">                            
+                            <mat-form-field>
+                                <input matInput [matDatepicker]="f_Albaran" required placeholder="Fecha de albaran" name="f_Albaran"
+                                disabled [(ngModel)]="fechaAlbaran" style="width: 75%;">
+                                <mat-datepicker-toggle matSuffix [for]="f_Albaran"></mat-datepicker-toggle>
+                                <mat-datepicker disabled="false" #f_Albaran></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-7">                            
+                            <input type="file" id="file">
+                        </div>
+                    </div>
+                <mat-checkbox [(ngModel)]="nonConform">Conforme</mat-checkbox>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="orderModal.hide()"
+                        mdbRippleRadius>
+                        <i class="fa fa-times mr-1"></i>
+                        Cerrar
+                    </button>
+                    <app-button [disabled]="!fechaAlbaran" [cssClass]="'btn btn-default'" [label]="'Save'"
+                        [isLoadingOnClick]="true" (click)="saveAlbaran()"></app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #inventarioModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="orderModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="inventarioModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Recuento
+                </h4>
+            </div>
+            <div class="modal-body">
+                <p>¿Deseas cerrar el pedido?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="inventarioModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    No
+                </button>
+                <app-button [cssClass]="'btn btn-default'" [label]="'Si'" [isLoadingOnClick]="true" (click)="closeOrder()"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

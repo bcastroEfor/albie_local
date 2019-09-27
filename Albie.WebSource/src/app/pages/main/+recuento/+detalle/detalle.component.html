@@ -1,0 +1,128 @@
+<div id="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="row">
+                <article class="col-6">
+                    <header class="background-header">
+                        <div class="col-12 header-widget-border">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <h6 class="title">
+                                        <span class="widget-icon top4">Recuento </span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="widget-body no-padding">
+                        <div class="col-12">
+                        </div>
+                        <div class="widget-footer">
+                            <div class="row">
+                                <div class="col-12 text-right">
+                                    <div class="px-3">
+                                        <abp-datatable #hojas title="Cabeceras recuento" [columns]="columnsList" tableClass="table-sm table-hover table-stripped"
+                                            [paginationId]="'dt-1'" [urlDataParams]="{st: status}" [urlData]="'cabeceraRecuento/GetCollectionListCabeceraRecuentos'">
+                                        </abp-datatable>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="col-6">
+                    <header class="background-header">
+                        <div class="col-md-12 header-widget-border">
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <h6 class="title">
+                                        <span class="widget-icon top4">Recuento </span>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="widget-body no-padding">
+                        <div class="col-md-12">
+                            <div class="col-12">
+                                <app-button [cssClass]="'btn btn-default'" [label]="'Iniciar recuento'"
+                                    [isLoadingOnClick]="true" (click)="recuentoModal.show()"></app-button>
+                                <table class="table">
+                                    <tr>
+                                        <td>{{tabla.almacen}}</td>
+                                        <td>
+                                            <table class="table">
+                                                <tr *ngFor="let zona of tabla.zonas">
+                                                    <td>{{zona.zona}}</td>
+                                                    <td>
+                                                        <table class="table">
+                                                            <tr *ngFor="let product of zona.productos">
+                                                                <td>{{product.product.description}}</td>
+                                                                <td>{{product.product.stockActual}}</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="widget-footer">
+                            <div class="row">
+                                <div class="col-12 text-right">
+                                    <div class="px-3">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>                
+            </div>
+        </div>
+    </div>
+</div>
+<div mdbModal #recuentoModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="orderModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="recuentoModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Recuento
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <abp-dataselect [showIcon]="false" #almacenesSelect label="Selecciona almacen" url="location/GetLocationSelect"
+                                (onSelect)="locationSelected($event)">
+                            </abp-dataselect>
+                        </div>
+                        <div class="col-6">
+                            <mat-form-field>
+                                <mat-label>Zonas</mat-label>
+                                <mat-select [formControl]="zona" multiple>
+                                    <mat-option *ngFor="let zon of zonas" [value]="zon.value">{{zon.viewValue}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="recuentoModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    Cerrar
+                </button>
+                <app-button [cssClass]="'btn btn-default'" [label]="'Save'" [isLoadingOnClick]="true" (click)="iniciarRecuento()"></app-button>
+            </div>
+        </div>
+    </div>
+</div>

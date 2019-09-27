@@ -1,0 +1,99 @@
+<div id="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h6 class="title">
+                                    <span class="widget-icon top4">Editar pedido </span>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div class="widget-body no-padding">
+                    <div class="col-md-12">
+                        <div class="col-12">
+                            <div class="top15 md-form">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <abp-dataselect [showIcon]="false" #provider label="Selecciona proveedor" url="provider/GetProviderSelect"
+                                            [selected]="item.buyFromVendorNo" (onSelect)="providerSelect($event)">
+                                        </abp-dataselect>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="f_Pedido" required placeholder="Fecha de pedido" name="f_Pedido"
+                                                disabled [(ngModel)]="item.orderDate" style="width: 75%;">
+                                            <mat-datepicker-toggle matSuffix [for]="f_Pedido"></mat-datepicker-toggle>
+                                            <mat-datepicker disabled="false" #f_Pedido></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput [matDatepicker]="f_Recepcion" required placeholder="Fecha de recepción" name="f_Recepcion"
+                                                disabled [(ngModel)]="item.expectedReceiptDate" style="width: 75%;">
+                                            <mat-datepicker-toggle matSuffix [for]="f_Recepcion"></mat-datepicker-toggle>
+                                            <mat-datepicker disabled="false" #f_Recepcion></mat-datepicker>
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <abp-dataselect [showIcon]="false" #centro label="Selecciona un centro" url="dimension/GetProviderSelect"
+                                            [selected]="item.centro" (onSelect)="centroSelect($event)" [urlParams]="{dc: 'CENTRO'}">
+                                        </abp-dataselect>
+                                    </div>
+                                    <div class="col-3">
+                                        <abp-dataselect [showIcon]="false" #zona label="Selecciona una zona" url="dimension/GetProviderSelect"
+                                            [selected]="item.zona" (onSelect)="zonaSelect($event)" [urlParams]="{dc: 'ZONA'}">
+                                        </abp-dataselect>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Provincia' | translate }}" [(ngModel)]="item.buyFromCounty">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'NPedido' | translate }}" [(ngModel)]="item.n_Pedido">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <abp-dataselect [showIcon]="false" #zona label="Selecciona estado" url="order/GetEnumCodTypes"
+                                            [selected]="item.estado" (onSelect)="estadoSelect($event)">
+                                        </abp-dataselect>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'OPedido' | translate }}" [(ngModel)]="item.origenPedido">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'importe' | translate }}" [(ngModel)]="item.amount">
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'IVA' | translate }}" [(ngModel)]="item.amountIncludingVAT">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="widget-footer">
+                        <div class="row">
+                            <div class="col-12 text-right">
+                                <div class="px-3">
+                                    <app-button [cssClass]="'btn btn-default'" [label]="'Save'" [isLoadingOnClick]="true" (click)="saveOrder()"></app-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>

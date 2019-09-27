@@ -1,0 +1,25 @@
+<button
+  [type]="type"
+  [ngClass]="cssClass"
+  mdbRippleRadius
+  (click)="click($event)"
+  [disabled]="disabled || _isLoading"
+  [attr.aria-label]="ariaLabel == null ? label : ariaLabel"
+  [matTooltip]="tooltipLabel"
+  [matTooltipClass]="tooltipCssClass"
+  [matTooltipPosition]="tooltipPosition">
+  <ng-container *ngIf="iconPosition === _dummyTemplateButtonIconPosition.left"
+    [ngTemplateOutlet]="tmplIcon"></ng-container>
+  {{label}}
+  <ng-container *ngIf="iconPosition === _dummyTemplateButtonIconPosition.right"
+    [ngTemplateOutlet]="tmplIcon"></ng-container>
+</button>
+
+<ng-template #tmplIcon>
+  <mat-spinner *ngIf="!spinnerDisabled && _isLoading"
+    [ngClass]="spinnerCssClass"
+    [diameter]="spinnerDiameter"
+    [color]="spinnerColor"></mat-spinner>
+  <i *ngIf="iconCssClass && (!_isLoading || spinnerDisabled)"
+    [ngClass]="iconCssClass"></i>
+</ng-template>

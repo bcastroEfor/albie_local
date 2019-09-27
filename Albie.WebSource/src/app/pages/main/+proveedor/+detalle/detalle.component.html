@@ -1,0 +1,139 @@
+<div id="content">
+    <div class="row">
+        <div class="col-sm-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h6 class="title">
+                                    <span class="widget-icon top4">Nuevo proveedor</span>
+                                </h6>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <div class="widget-body no-padding">
+                        <div class="col-md-12">
+                            <div class="top15 md-form">
+                                <div class="row">
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Name' | translate }}" [(ngModel)]="item.name" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Alias' | translate }}" [(ngModel)]="item.searchName" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Name2' | translate }}" [(ngModel)]="item.name2" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'CIF/NIF' | translate }}" [(ngModel)]="item.vatRegistrationNo" >
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Address' | translate }}" [(ngModel)]="item.address" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Address2' | translate }}" [(ngModel)]="item.address2" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'PostCode' | translate }}" [(ngModel)]="item.postCode" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'City' | translate }}" [(ngModel)]="item.city" >
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'County' | translate }}" [(ngModel)]="item.county" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Country' | translate }}" [(ngModel)]="item.countryRegionCode" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Email' | translate }}" [(ngModel)]="item.email" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'HomePage' | translate }}" [(ngModel)]="item.homepage" >
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Contact' | translate }}" [(ngModel)]="item.contact" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Phone' | translate }}" [(ngModel)]="item.phoneNo" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Nº Cuenta' | translate }}" [(ngModel)]="item.ourAccountNo" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <abp-autocomplete #centroComplete class="md-form" [label]="'Busca un centro'" [inputId]="'centro'" url="dimension/GetDimensionesSelectAutocomplete"
+                                            [(filter)]="centro" [showIcon]="false" (onSelect)="selectCentro($event)" [pageSize]="15" [urlParams]="{dimensionCode: 'Centro'}">
+                                        </abp-autocomplete>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3">
+                                            <abp-autocomplete #zonaComplete class="md-form" [label]="'Busca una zona'" [inputId]="'zona'" url="dimension/GetDimensionesSelectAutocomplete"
+                                                [(filter)]="zona" [showIcon]="false" (onSelect)="selectZona($event)" [pageSize]="15" [urlParams]="{dimensionCode: 'Zona'}">
+                                            </abp-autocomplete>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Shipping Agent' | translate }}" [(ngModel)]="item.shippingAgentCode" >
+                                        </mat-form-field>
+                                    </div>
+                                    <div class="col-3">
+                                        <mat-form-field>
+                                            <input matInput placeholder="{{ 'Payment Method' | translate }}" [(ngModel)]="item.paymentMethodCode" >
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-footer">
+                            <div class="row">
+                                <div class="col-12 text-right">
+                                    <button class="btn btn-albie" id="saveProvider" (click)="saveProvider()">Guardar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>        
+    </div>
+</div>

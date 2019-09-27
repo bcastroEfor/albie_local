@@ -1,0 +1,40 @@
+<div class="container pt-3">
+    <div class="row mt-5 justify-content-md-center">
+        <div class="col-md-4 card wow fadeIn">
+            <div class="px-3">
+                <div class="img-fluid logo-wrapper z-depth-2 p-1">
+                    <div class="logo-bg"></div>
+                </div>
+            </div>
+
+            <div class="card-body">
+                <p class="h5 text-center mb-4" translate>{{'SignIn' | translate}}</p>
+            
+                <!-- <div class="md-form wow fadeInUp" data-wow-delay="1s">
+                    <i class="fa fa-user prefix grey-text"></i>
+                    <input type="text" id="defaultForm-email" class="form-control" mdbActive [(ngModel)]="userData.username">
+                    <label for="defaultForm-email">{{'Username' | translate}}</label>
+                </div>
+                <div class="md-form wow fadeInUp" data-wow-delay="1.5s">
+                    <i class="fa fa-lock prefix grey-text"></i>
+                    <input type="password" id="defaultForm-pass" class="form-control" mdbActive [(ngModel)]="userData.password">
+                    <label for="defaultForm-pass">{{'Password' | translate}}</label>
+                </div> -->
+                <form #formAuth class="form-signin" [method]="'POST'" [action]="'/api/account/oauth'">
+                <div class="row">
+                    <div class="col">
+                        <img class="mb-4 cursor-pointer" src="https://docs.microsoft.com/en-us/azure/active-directory/develop/media/howto-add-branding-in-azure-ad-apps/ms-symbollockup singnin light.svg" (click)="formAuth.submit()">
+                    </div>
+                </div>
+                </form>
+                
+                <div class="text-center wow fadeIn" data-wow-delay="2.5s">
+                    <app-button
+                        [isLoading]="isLoading"
+                        [label]="'Login' | translate"
+                        (onClick)="logIn()"></app-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

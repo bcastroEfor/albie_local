@@ -1,0 +1,75 @@
+<div id="content">
+    <div class="row">
+        <!-- Tabla grupos -->
+        <div class="col-md-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <h6><span style="left: 10px;" class="widget-icon top4">Listado</span></h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <div class="widget-body no-padding">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <abp-datatable #cartList title="Listas" [columns]="columnsList" tableClass="table-sm table-hover table-stripped"
+                                    [paginationId]="'ht-g-a-dt-1'" [urlDataParams]="{PedidoHabitual: false}" [urlData]="'cartlist/GetCollectionListCartList'"
+                                    (onRowClick)="onRowClick($event)">
+                                </abp-datatable>
+                            </div>
+                            <div class="col-md-6">
+                                <abp-datatable #productCartList title="Productos de la lista" [columns]="columnsProductList" tableClass="table-sm table-hover table-stripped"
+                                    [paginationId]="'ht-g-a-dt-2'" [launchOnStartup]="false" [urlDataParams]="{listaId: idList}" [urlData]="'cartlist/GetCollectionListProductCartList'">
+                                </abp-datatable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+<div mdbModal #providersModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="providersModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="providersModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Cambiar proveedor
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <abp-datatable #providerRate [columns]="columnsProviderRate"
+                        tableClass="table-sm table-hover table-stripped" [paginationId]="'ht-g-a-dt-1'"
+                        [urlData]="'providerrate/GetCollectionListProvidersRates'" 
+                        [launchOnStartup]="false"
+                        [urlDataParams]="{ ProductId: productId }"
+                        (onRowClick)="onProductsCategoryRowClick($event)">
+                    </abp-datatable>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="providersModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    Cerrar
+                </button>
+                <button type="button" class="btn btn-albie" >Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

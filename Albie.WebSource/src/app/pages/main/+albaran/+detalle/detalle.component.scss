@@ -1,0 +1,99 @@
+.example-headers-align .mat-expansion-panel-header-title,
+  .example-headers-align .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+
+  .example-headers-align .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  abp-dataselect mat-form-field {
+    padding-top: 12px !important;
+  }
+  .chk-workertypes {
+    display: flex;
+    mat-checkbox {
+      margin-right: 10px;
+    }
+  }
+
+  article {
+    border: solid rgb(204, 204, 204);
+    border-width: 1px 2px 1px;
+    //padding: 5px;
+  }
+
+  article .mat-checkbox {
+    display: inline-block;
+  }
+
+  .title,
+  .widget-icon,
+  .check-section {
+    line-height: 40px;
+    color: #007476 !important;
+    font-weight: bolder;
+  }
+
+  .header-widget-border {
+    border-bottom: 1px solid rgb(204, 204, 204);
+  }
+
+  #content .row:not(first-child) {
+    //margin-top: 10px;
+    margin-top: 0px;
+  }
+
+  .boldTh thead tr th {
+    font-weight: bold;
+  }
+
+  .success {
+    background-color: #ffa4a2;
+  }
+
+  .desactivado {
+    opacity: 0.5;
+  }
+
+  td.dndDragging {
+    opacity: 0.5;
+  }
+  td.dndDragover {
+    -webkit-box-shadow: inset 0px 0px 0px 4px black;
+    box-shadow: inset 0px 0px 0px 4px black;
+    opacity: 0.3;
+  }
+
+  #content .row:first-child .widget-body.no-padding {
+    // min-height: 360px;
+  }
+
+
+.width-autocomplete {
+  width: 91% !important;
+}
+
+.margin-top7 {
+  margin-top: 7px;
+}
+
+.padding-left0 {
+  padding-left: 0px !important;
+}
+
+.background-header {
+  background-color: #f2f2f2;
+}
+
+abp-autocomplete.width-autocomplete input + button {
+  position: absolute;
+  top: 0px;
+  right: -30px;
+}
+
+abp-autocomplete input {
+  margin: 0 !important;
+  padding: 0 0.75rem !important;
+}

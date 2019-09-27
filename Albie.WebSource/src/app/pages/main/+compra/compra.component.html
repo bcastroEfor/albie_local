@@ -1,0 +1,162 @@
+<div id="content">
+    <div class="row">
+        <!-- Tabla grupos -->
+        <div class="col-md-12">
+            <article>
+                <header class="background-header">
+                    <div class="col-md-12 header-widget-border">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="row">
+                                            <h6><span style="left: 10px;" class="widget-icon top4">Listado
+                                                    {{title}}</span></h6>
+                                            <div class="col-md-6">
+                                                <button id="changeList" class="btn btn-albie btn-sm" (click)="modo = !modo">Cambiar
+                                                    listado</button>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button *ngIf="modeProduct" class="btn btn-albie btn-sm" (click)="providerMode()">Por
+                                                    proveedor</button>
+                                                <button *ngIf="!modeProduct" class="btn btn-albie btn-sm" (click)="productMode()">Por
+                                                    producto</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <div>
+                    <div class="widget-body no-padding">
+                        <div class="">
+                            <div *ngIf="modo && modeProduct">
+
+                                <abp-datatable *ngIf="identation < 2 && !providers" #productsCategory [showAddItemBtn]="true"
+                                    [columns]="columnsProductCategory" [showAddItemBtn]="false" tableClass="table-sm table-hover table-stripped"
+                                    [paginationId]="'ht-g-a-dt-1'" [urlData]="'compra/GetCollectionListProductsCategory'"
+                                    [urlDataParams]="{ParentCategory: parentCategory }" (onRowClick)="onProductsCategoryRowClick($event)">
+                                </abp-datatable>
+                                <abp-datatable *ngIf="identation >= 2 && !providers" #products [showAddItemBtn]="true"
+                                    [columns]="columnsProduct" [showAddItemBtn]="false" tableClass="table-sm table-hover table-stripped"
+                                    [paginationId]="'ht-g-a-dt-2'" [urlData]="'compra/GetCollectionListProducts'"
+                                    [urlDataParams]="{ParentCategory: parentCategory }" (onRowClick)="onProductsRowClick($event)">
+                                </abp-datatable>
+                                <!-- <abp-datatable *ngIf="providers" #providers [showAddItemBtn]="true" [columns]="columnsProviders"
+                                [showAddItemBtn]="false" tableClass="table-sm table-hover table-stripped" [paginationId]="'ht-g-a-dt-3'" [urlData]="'compra/GetCollectionListProviders'"
+                                [urlDataParams]="{ParentCategory: parentCategory }" (onRowClick)="onProvidersRowClick($event)">
+                            </abp-datatable> -->
+                            </div>
+                            <div class="col-md-12" *ngIf="!modo">
+                                <div class="row">
+                                    <div class="col-md-4" *ngIf="modeProduct">
+                                        <abp-autocomplete #autoComplete class="md-form" [label]="'Busca un producto'"
+                                            [inputId]="'productName'" url="product/GetProductosSelectAutocomplete"
+                                            [(filter)]="productName" [showIcon]="false" (onSelect)="selectProduct($event)"
+                                            [pageSize]="15">
+                                        </abp-autocomplete>
+                                    </div>
+                                    <div class="col-md-4" *ngIf="modeProduct">
+                                        <abp-dataselect [showIcon]="false" #category label="Selecciona categoría" url="product/GetProductSelect"
+                                            [selected]="'1'" (onSelect)="categorySelect($event)">
+                                        </abp-dataselect>
+                                    </div>
+                                    <div class="col-md-4" *ngIf="modeProduct">
+                                        <abp-dataselect *ngIf="showSubcategory" [showIcon]="false" #subcategory label="Selecciona subcategoría"
+                                            url="product/GetProductSelect" [selected]="'1'" (onSelect)="subCategorySelect($event)"
+                                            [urlParams]="{ ParentCategory: parentCategory}">
+                                        </abp-dataselect>
+                                    </div>
+                                    <div class="col-md-4" *ngIf="modeProduct">
+                                        <abp-dataselect *ngIf="showSubsubcategory" [showIcon]="false" #corte label="Selecciona corte"
+                                            url="product/GetProductSelect" [selected]="'1'" (onSelect)="corteSelect($event)"
+                                            [urlParams]="{ ParentCategory: parentCategory}">
+                                        </abp-dataselect>
+                                    </div>
+                                    <div class="col-md-4" *ngIf="!modeProduct">
+                                        <abp-dataselect [showIcon]="false" #provider label="Selecciona proveedor" url="providerrate/GetProviderSelect"
+                                            [selected]="'1'" (onSelect)="providerSelect($event)">
+                                        </abp-dataselect>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row" *ngIf="!modo && modeProduct">
+                            <div class="col-md-3" *ngFor="let cod of products; trackBy: trackByFn; let i = index">
+                                <mat-card class="example-card">
+                                    <mat-card-header>
+                                        <div mat-card-avatar class="example-header-image"></div>
+                                        <!-- <mat-card-title>{{cod.productCategory.description}}</mat-card-title> -->
+                                        <!-- <mat-card-subtitle>{{cod.productCategory.productCategory.description}}</mat-card-subtitle> -->
+                                    </mat-card-header>
+                                    <img mat-card-image src="../../../../assets/img/products/{{cod.photo}}" alt="{{cod.description}}">
+                                    <mat-card-content>
+                                        <p>
+                                            {{cod.description}}
+                                        </p>
+                                        <p>
+                                            <button class="btn btn-albie" (click)="openModalProviders(cod)"><i class="fa fa-users"></i></button>
+                                            Precio: {{cod.unitPrice}} €
+                                        </p>
+                                    </mat-card-content>
+                                    <mat-card-actions>
+                                        <div class="row">
+
+                                            <div class="col-md-4">
+                                                <button class="btn btn-albie btn-sm" (click)="addProduct(cod)">Añadir</button>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <input [(ngModel)]="cod.unitMeasureProduct.quantity" [max]="10" [min]="cod.unitMeasureProduct.quantity == 'UD' ? 1 : 0.01"
+                                                    [step]="cod.unitMeasureProduct.quantity == 'UD' ? 1 : 0.001" type="number">
+                                                <!-- <mat-slider class="example-margin" [max]="10" [min]="0.01" [step]="0.001"
+                                                    [thumbLabel]="true" [tickInterval]="true" [(ngModel)]="cod.unitMeasureProduct.quantity">
+                                                </mat-slider> -->
+                                            </div>
+                                            <div class="col-md-4">{{cod.unitMeasureProduct.code}}
+                                            </div>
+                                        </div>
+                                    </mat-card-actions>
+                                </mat-card>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</div>
+
+<div mdbModal #providersModal="mdb-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="providersModal"
+    aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-notify modal-info" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close pull-right" aria-label="Close" (click)="providersModal.hide()">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">
+                    Proveedores
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-12">
+                    <abp-datatable #providerRate [launchOnStartup]="false" [columns]="columnsProviderRate" tableClass="table-sm table-hover table-stripped"
+                        [paginationId]="'ht-g-a-dt-1'" [urlData]="'providerrate/GetCollectionListProvidersRates'"
+                        [urlDataParams]="{ ProductId: productoId }" (onRowClick)="onProviderRateRowClick($event)">
+                    </abp-datatable>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-light" aria-label="Close" (click)="providersModal.hide()"
+                    mdbRippleRadius>
+                    <i class="fa fa-times mr-1"></i>
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
